@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Cards from "./components/HomePage/Cards";
+import { Globe, Users } from "lucide-react";
 import { getPosts } from "./utils/posts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -73,41 +74,6 @@ export default async function Home() {
                 </div>
             </section>
 
-            {/* Next Competition Section */}
-            <section className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto relative group">
-                    <div className="relative bg-card border border-border/50 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-xl">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                            <div className="text-center md:text-left space-y-4">
-                                <h2 className="text-3xl md:text-4xl font-bold">
-                                    Nadolazeće Natjecanje
-                                </h2>
-                                <div>
-                                    <p className="text-2xl font-semibold text-primary">
-                                        Cro Cube Open 2026
-                                    </p>
-                                    <p className="text-lg text-muted-foreground mt-1">
-                                        📅 15. - 16. Ožujak 2026.
-                                    </p>
-                                    <p className="text-lg text-muted-foreground">
-                                        📍 Zagreb, Hrvatska
-                                    </p>
-                                </div>
-                            </div>
-                            <Link href="/Competitions">
-                                <Button
-                                    variant="outline"
-                                    size="lg"
-                                    className="border-primary/50 hover:bg-primary/10 text-lg px-8 cursor-pointer"
-                                >
-                                    Saznaj više
-                                </Button>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Latest Posts Section */}
             <section className="container mx-auto px-4">
                 <div className="flex items-center justify-between mb-12">
@@ -134,18 +100,61 @@ export default async function Home() {
             </section>
 
             {/* About Us Section */}
-            <section className="container mx-auto px-4">
-                <div className="bg-secondary/10 rounded-3xl p-8 md:p-16 text-center max-w-5xl mx-auto">
-                    <h2 className="text-3xl font-bold mb-6">O Nama</h2>
-                    <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                        <span className="font-bold text-foreground">
-                            Cro Cube Comp
-                        </span>{" "}
-                        je organizacija posvećena promociji speedcubinga u
-                        Hrvatskoj. Organiziramo natjecanja prema WCA pravilima,
-                        okupljamo entuzijaste i gradimo zajednicu koja potiče
-                        razvoj vještina i prijateljstva.
-                    </p>
+            <section className="container mx-auto px-4 py-12 md:py-24">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6 text-center md:text-left">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                            O Nama
+                        </h2>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            <span className="font-semibold text-foreground">
+                                Cro Cube Comp
+                            </span>{" "}
+                            je središte hrvatske speedcubing zajednice. Naš cilj
+                            je popularizacija ovog sporta kroz organizaciju
+                            službenih WCA natjecanja i okupljanje entuzijasta
+                            svih uzrasta.
+                        </p>
+                        <div className="pt-4">
+                            <Link href="/Competitions">
+                                <Button size="lg" className="px-8">
+                                    Saznaj više
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="grid gap-6 sm:grid-cols-2">
+                        <div className="bg-card border border-border/50 rounded-2xl p-6 space-y-4 hover:border-primary/50 transition-colors">
+                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <Globe className="h-6 w-6" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold text-xl mb-2">
+                                    WCA Službeno
+                                </h3>
+                                <p className="text-muted-foreground text-sm">
+                                    Sva naša natjecanja prate službena pravila
+                                    Svjetske Cube Asocijacije.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="bg-card border border-border/50 rounded-2xl p-6 space-y-4 hover:border-primary/50 transition-colors">
+                            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <Users className="h-6 w-6" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold text-xl mb-2">
+                                    Zajednica
+                                </h3>
+                                <p className="text-muted-foreground text-sm">
+                                    Gradimo prijateljsko okruženje za početnike
+                                    i iskusne natjecatelje.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
