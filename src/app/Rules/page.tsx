@@ -28,27 +28,27 @@ export default function Rules() {
                     <li>
                         <SmoothAnchor
                             href="#pravila1"
-                            className="flex items-center text-primary hover:text-primary/80 transition-colors group"
+                            className="flex items-center text-muted-foreground transition-colors group"
                         >
-                            <span className="w-6 h-px bg-primary/30 mr-3 group-hover:w-8 transition-all duration-200"></span>
+                            <span className="w-6 h-px bg-muted-foreground/30 mr-3 group-hover:w-8 transition-all duration-200"></span>
                             1. SLOŽENO STANJE
                         </SmoothAnchor>
                     </li>
                     <li>
                         <SmoothAnchor
                             href="#pravila2"
-                            className="flex items-center text-primary hover:text-primary/80 transition-colors group"
+                            className="flex items-center text-muted-foreground transition-colors group"
                         >
-                            <span className="w-6 h-px bg-primary/30 mr-3 group-hover:w-8 transition-all duration-200"></span>
+                            <span className="w-6 h-px bg-muted-foreground/30 mr-3 group-hover:w-8 transition-all duration-200"></span>
                             2. PROSJEK
                         </SmoothAnchor>
                     </li>
                     <li>
                         <SmoothAnchor
                             href="#pravila3"
-                            className="flex items-center text-primary hover:text-primary/80 transition-colors group"
+                            className="flex items-center text-muted-foreground transition-colors group"
                         >
-                            <span className="w-6 h-px bg-primary/30 mr-3 group-hover:w-8 transition-all duration-200"></span>
+                            <span className="w-6 h-px bg-muted-foreground/30 mr-3 group-hover:w-8 transition-all duration-200"></span>
                             3. INSPEKCIJA
                         </SmoothAnchor>
                     </li>
