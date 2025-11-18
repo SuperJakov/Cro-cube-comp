@@ -1,21 +1,52 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "react-query";
-import styles from "./Register.module.css";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUser } from "../utils/users";
 import { Loader } from "../components/Loader/Loader";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+const formSchema = z.object({
+    username: z.string().min(1, "Korisničko ime je obavezno"),
+    password: z.string().min(1, "Lozinka je obavezna"),
+    group: z.enum(["1", "2"]).refine((val) => val !== undefined, {
+        message: "Morate odabrati grupu",
+    }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 export default function RegisterPage() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [group, setGroup] = useState<number>(1);
     const [message, setMessage] = useState("");
 
+    const form = useForm<FormValues>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            username: "",
+            password: "",
+            group: "1",
+        },
+    });
+
     const { mutate, isLoading } = useMutation(registerUser, {
-        onSuccess: (data) => {
+        onSuccess: (data, variables) => {
             if (data.success) {
-                setMessage(`Korisnik ${username} je registriran!`);
+                setMessage(`Korisnik ${variables.username} je registriran!`);
+                form.reset();
             } else {
                 setMessage(data.message || "Greška prilikom registracije");
             }
@@ -25,82 +56,112 @@ export default function RegisterPage() {
         },
     });
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // Basic validation
-        if (!username || !password) {
-            setMessage("Ime i lozinka su obavezni");
-            return;
-        }
-        mutate({ username, password, group });
+    const onSubmit = (values: FormValues) => {
+        mutate({
+            username: values.username,
+            password: values.password,
+            group: parseInt(values.group),
+        });
     };
 
     return (
-        <main className={styles["form-container"]}>
-            <form
-                id="registerForm"
-                onSubmit={handleSubmit}
-                className={styles["register-form"]}
-            >
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="Korisničko ime"
-                    className={styles["username-input"]}
-                    autoCapitalize="words"
-                    autoFocus
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Lozinka"
-                    className={styles["password-input"]}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-
-                <div className={styles["groups-container"]}>
-                    <div className={styles["group-container"]}>
-                        <label htmlFor="group-1">Grupa 1</label>
-                        <input
-                            checked={group === 1}
-                            type="radio"
-                            id="group-1"
-                            name="group"
-                            className={styles["radio-input"]}
-                            value="1"
-                            onChange={(e) => setGroup(parseInt(e.target.value))}
-                        />
-                    </div>
-                    <div className={styles["group-container"]}>
-                        <label htmlFor="group-2">Grupa 2</label>
-                        <input
-                            checked={group === 2}
-                            type="radio"
-                            id="group-2"
-                            name="group"
-                            className={styles["radio-input"]}
-                            value="2"
-                            onChange={(e) => setGroup(parseInt(e.target.value))}
-                        />
-                    </div>
-                </div>
-                <button
-                    className={styles["submit-btn"]}
-                    type="submit"
-                    disabled={isLoading}
+        <main className="flex justify-center items-center h-[90vh] flex-col">
+            <Form {...form}>
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6 w-full max-w-md p-5"
                 >
-                    {isLoading ? <Loader /> : "Registriraj"}
-                </button>
-                <div className={styles["message-container"]}>
-                    <p className={styles["message"]}>{message}</p>
-                </div>
-            </form>
+                    <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Korisničko ime</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        placeholder="Unesite korisničko ime"
+                                        autoCapitalize="words"
+                                        autoFocus
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Lozinka</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        type="password"
+                                        placeholder="Unesite lozinku"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="group"
+                        render={({ field }) => (
+                            <FormItem className="space-y-3">
+                                <FormLabel>Grupa</FormLabel>
+                                <FormControl>
+                                    <RadioGroup
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                        className="flex space-x-4"
+                                    >
+                                        <div className="flex items-center space-x-2">
+                                            <RadioGroupItem
+                                                value="1"
+                                                id="group-1"
+                                            />
+                                            <Label htmlFor="group-1">
+                                                Grupa 1
+                                            </Label>
+                                        </div>
+                                        <div className="flex items-center space-x-2">
+                                            <RadioGroupItem
+                                                value="2"
+                                                id="group-2"
+                                            />
+                                            <Label htmlFor="group-2">
+                                                Grupa 2
+                                            </Label>
+                                        </div>
+                                    </RadioGroup>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? <Loader /> : "Registriraj"}
+                    </Button>
+
+                    {message && (
+                        <div className="text-center">
+                            <p className="text-sm font-medium text-foreground">
+                                {message}
+                            </p>
+                        </div>
+                    )}
+                </form>
+            </Form>
         </main>
     );
 }
