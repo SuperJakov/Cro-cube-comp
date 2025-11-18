@@ -15,8 +15,8 @@ export default function Round({
 }) {
     return (
         <>
-            <div className="flex items-center justify-between rounded-lg border-2 border-border/60 bg-card/20 px-4 py-2">
-                <h4 className="text-base font-semibold text-foreground">
+            <div className="flex items-center justify-between rounded-lg border border-border px-4 py-2 transition-colors hover:border-primary/40">
+                <h4 className="text-base font-medium text-foreground">
                     Runda {roundIndex + 1}
                 </h4>
                 <ShowAndHide

@@ -9,8 +9,8 @@ export default async function CompetitionEvent({
     event: Result[][];
 }) {
     return (
-        <div className="space-y-2 rounded-lg border border-border/30 bg-card/30 p-4">
-            <h3 className="pl-4 text-lg font-medium text-foreground">
+        <div className="space-y-3 rounded-xl border border-border p-4 transition-all hover:border-primary/50 hover:shadow-sm">
+            <h3 className="text-xl font-semibold tracking-tight text-primary">
                 {eventName}
             </h3>
             <EventResults event={event} />

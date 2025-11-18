@@ -39,19 +39,37 @@ export default function RoundResults({
                     Nema rezultata za ovu rundu.
                 </p>
             ) : (
-                round.map((result, index) => {
-                    return (
-                        <div key={index} className="text-base text-foreground ">
-                            <p>
-                                {index + 1}. {result.username}{" "}
-                                {result.solves
-                                    .map((solve) => formatTime(solve))
-                                    .join(" ")}{" "}
-                                (Ao5 {getAverage(result.solves)})
-                            </p>
-                        </div>
-                    );
-                })
+                <div className="flex flex-col gap-1">
+                    {round.map((result, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className="flex items-center justify-between rounded-md p-2 text-sm transition-colors hover:bg-muted/50"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <span className="font-mono font-bold text-primary w-6">
+                                        {index + 1}.
+                                    </span>
+                                    <span className="font-medium text-foreground">
+                                        {result.username}
+                                    </span>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="flex gap-2 font-mono text-muted-foreground text-xs">
+                                        {result.solves.map((solve, i) => (
+                                            <span key={i}>
+                                                {formatTime(solve)}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <span className="font-mono font-bold text-foreground">
+                                        Ao5: {getAverage(result.solves)}
+                                    </span>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
             )}
         </motion.div>
     );

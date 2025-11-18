@@ -38,10 +38,12 @@ export default async function Competition(props: {
     const competitionEvents = Object.keys(competition.events) as EventCode[];
 
     return (
-        <div className="space-y-4 rounded-xl border border-border/30 bg-card/40 p-5 shadow-sm shadow-shadow-color/10">
-            <CompetitionName name={competitionName} />
-            <CompetitionDate date={competitionDateString} />
-            <div>
+        <div className="space-y-6  p-6  transition-all ">
+            <div className="flex flex-col gap-1 border-b border-border pb-4">
+                <CompetitionName name={competitionName} />
+                <CompetitionDate date={competitionDateString} />
+            </div>
+            <div className="grid gap-6">
                 {competitionEvents.map((eventName, index) => {
                     const event = competition.events[eventName];
                     return (

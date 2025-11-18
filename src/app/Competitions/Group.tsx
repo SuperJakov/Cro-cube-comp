@@ -48,7 +48,7 @@ export default function Group({ group, groupNumber }: Props) {
     return (
         <section
             className={clsx(
-                "flex flex-col gap-4 rounded-xl border border-border/40 bg-card/10 p-4 transition-[gap] duration-300",
+                "flex flex-col gap-4 rounded-xl border border-border/40 bg-card/50 p-4 transition-all duration-300 hover:border-border/80",
                 {
                     "gap-0": !areGroupResultsShown,
                 },
@@ -56,10 +56,10 @@ export default function Group({ group, groupNumber }: Props) {
             id={`group-${groupIndex}`}
             aria-labelledby={`group-title-${groupIndex}`}
         >
-            <div className="flex items-center gap-4 rounded-lg bg-foreground/10 px-4 py-3">
+            <div className="flex items-center gap-4 border-b border-border/40 px-2 pb-3 pt-1">
                 <h4
                     id={`group-title-${groupIndex}`}
-                    className="text-lg font-semibold text-foreground"
+                    className="text-lg font-semibold "
                 >
                     Grupa {groupNumber}
                 </h4>

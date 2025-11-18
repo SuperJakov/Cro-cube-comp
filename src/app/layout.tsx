@@ -21,12 +21,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="hr" className={roboto.className}>
+        <html lang="hr" className={`${roboto.className} dark`}>
             <meta
                 name="google-site-verification"
                 content="p4gzWQ-1iXVG0l_lfeyeSHMr_37F_pq6QH3hu8zmL40"
             />
-            <body className="bg-background text-foreground">
+            <body className="bg-background text-foreground ">
                 <AuthProvider>
                     <ReactQueryProvider>
                         <Header />
