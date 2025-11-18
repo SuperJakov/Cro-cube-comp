@@ -22,7 +22,7 @@ type CardsProps = { posts: PostProp[] };
 function Cards({ posts }: CardsProps) {
     const auth = useAuth();
     return (
-        <main className={styles.cards} suppressHydrationWarning>
+        <main className={styles.cards}>
             {staticCards(auth).map((card, index) => (
                 <Card key={`card-${index}`} {...card} loggedIn={loggedIn()} />
             ))}

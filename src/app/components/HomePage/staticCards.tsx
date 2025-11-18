@@ -22,7 +22,7 @@ export const staticCards = (auth: AuthContextType): CardProp[] => [
         description: (
             <p>
                 Službena pravila natjecanja možete pronaći{" "}
-                <Link href="/Rules">ovdje</Link>.
+                <Link href="/rules">ovdje</Link>.
             </p>
         ),
     },

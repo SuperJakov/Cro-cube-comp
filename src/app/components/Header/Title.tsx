@@ -13,7 +13,7 @@ const routeTitles: {
     "/Scramble": "Vježbanje",
     "/Dashboard": "Radna ploča",
     "/Advanced-Dashboard": "Radna ploča",
-    "/Rules": "Pravila",
+    "/rules": "Pravila",
     "/Posts": "Objave",
 };
 
