@@ -26,11 +26,12 @@ export default function RootLayout({
                 name="google-site-verification"
                 content="p4gzWQ-1iXVG0l_lfeyeSHMr_37F_pq6QH3hu8zmL40"
             />
-            <body>
+            <body className="bg-background text-foreground">
                 <AuthProvider>
                     <ReactQueryProvider>
                         <Header />
                         {children}
+
                         {showToolBar && <AdminToolbar />}
                         <SpeedInsights />
                         <Analytics />

@@ -1,29 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import headerStyles from "./Header.module.css";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
-import { clsx } from "clsx";
+import { cn } from "@/lib/utils";
 import AccountCircleSvg from "../Svg/account_circle";
+import { Button } from "@/components/ui/button";
 
 function ClientLoginStatus() {
     const router = useRouter();
-    const { username, logOut } = useAuth(); // Use useAuth hook
+    const { username, logOut } = useAuth();
     const loggedIn = !!username;
 
     return (
-        <header className={headerStyles["account-container"]}>
-            <h2 className={headerStyles["log-in"]}>
-                {username ? username : <Link href="/Login">Prijava</Link>}
+        <div className="flex items-center gap-3">
+            <h2 className="text-base font-medium">
+                {username ? (
+                    <span className="text-foreground">{username}</span>
+                ) : (
+                    <Button asChild variant="ghost" className="text-foreground hover:bg-transparent hover:underline">
+                        <Link href="/Login">Prijava</Link>
+                    </Button>
+                )}
             </h2>
             <AccountCircleSvg
-                className={clsx(headerStyles["account-circle"], {
-                    [headerStyles["logged-in"]]: loggedIn,
-                })}
-                width="24px"
-                height="24px"
-                fill="white"
+                className={cn(
+                    "h-6 w-6 cursor-pointer text-white transition-opacity hover:opacity-80",
+                    loggedIn ? "opacity-100" : "opacity-60"
+                )}
+                width="24"
+                height="24"
+                fill="currentColor"
                 onClick={() => {
                     if (loggedIn) {
                         logOut();
@@ -32,8 +39,9 @@ function ClientLoginStatus() {
                 }}
                 role="button"
                 tabIndex={0}
+                aria-label={loggedIn ? "Odjava" : "Prijava"}
             />
-        </header>
+        </div>
     );
 }
 

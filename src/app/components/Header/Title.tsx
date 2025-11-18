@@ -1,8 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import headerStyles from "./Header.module.css";
 
 const routeTitles: {
     [index: string]: string | undefined;
@@ -20,16 +18,15 @@ const routeTitles: {
 };
 
 function ClientTitle() {
-    const pathname = usePathname(); // Get the current pathname
-    const [title, setTitle] = useState<string>("");
+    const pathname = usePathname();
 
-    useEffect(() => {
-        // Update the title based on the current pathname
-        const currentTitle = routeTitles[pathname] || "Cro Cube Comp";
-        setTitle(currentTitle);
-    }, [pathname]); // Re-run when pathname changes
+    const currentTitle = routeTitles[pathname] || "Cro Cube Comp";
 
-    return <h1 className={headerStyles["title"]}>{title}</h1>;
+    return (
+        <h1 className="inline-block min-h-[40px] text-3xl font-bold">
+            {currentTitle}
+        </h1>
+    );
 }
 
 export default ClientTitle;
