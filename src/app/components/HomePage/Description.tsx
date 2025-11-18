@@ -1,6 +1,6 @@
-import styles from "./Cards.module.css";
 import DomPurify from "dompurify";
 import { useState, useEffect } from "react";
+
 type Props = {
     description: React.ReactNode | string;
     isPost: boolean;
@@ -47,10 +47,11 @@ export default function Description({ description, isPost }: Props) {
                                 : truncatedDescription,
                         }}
                         style={{ overflow: "hidden" }}
+                        className="break-words"
                     />
                     {sanitizedDescription.length > maxLength && (
                         <button
-                            className={styles["show-more-button"]}
+                            className="text-primary hover:underline text-sm font-medium mt-2 inline-block"
                             onClick={() => setShowMore(!showMore)}
                         >
                             {showMore ? "Prikaži manje" : "Prikaži više"}

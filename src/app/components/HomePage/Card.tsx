@@ -1,4 +1,3 @@
-import styles from "./Cards.module.css";
 import { CardProp } from "../../Types/cards";
 import { useState, useEffect } from "react";
 import Description from "./Description";
@@ -20,25 +19,32 @@ export default function Card({
     if (!shouldCardRender) return null;
 
     return (
-        <article className={styles.card} role="article">
-            <div className={styles["card-inside-container"]}>
-                <header className={styles["post-title-container"]}>
-                    <h2 className={styles["post-title"]} aria-label={title}>
+        <article className="group relative bg-card text-card-foreground rounded-xl shadow-lg border border-border/50 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div className="absolute -inset-px bg-gradient-to-r from-primary/50 to-secondary/50 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none blur-sm" />
+
+            <div className="relative p-6 flex flex-col h-full z-10">
+                <header className="mb-4">
+                    <h2
+                        className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors duration-300"
+                        aria-label={title}
+                    >
                         {title}
                     </h2>
                 </header>
                 <div
-                    className={styles["post-description-container"]}
+                    className="flex-grow text-muted-foreground prose prose-invert max-w-none group-hover:text-foreground transition-colors duration-300"
                     aria-label="Post Description"
                 >
                     <Description description={description} isPost={!!isPost} />
                 </div>
                 {author && (
-                    <footer className={styles["post-author-container"]}>
-                        <p className={styles["post-author-p"]}>
+                    <footer className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between text-sm text-muted-foreground">
+                        <p>
                             <span aria-label="Posted by">Objavio</span>{" "}
                             <span
-                                className={styles["post-author"]}
+                                className="font-semibold text-foreground"
                                 aria-label={author.username}
                             >
                                 {author.username}

@@ -1,10 +1,6 @@
 "use client";
 
-import styles from "./Cards.module.css";
 import Card from "./Card";
-import { loggedIn } from "@/app/utils/credentials";
-import { staticCards } from "./staticCards";
-import { useAuth } from "@/app/context/AuthContext";
 
 export type PostProp = {
     id: string;
@@ -20,16 +16,12 @@ export type PostProp = {
 type CardsProps = { posts: PostProp[] };
 
 function Cards({ posts }: CardsProps) {
-    const auth = useAuth();
     return (
-        <main className={styles.cards}>
-            {staticCards(auth).map((card, index) => (
-                <Card key={`card-${index}`} {...card} loggedIn={loggedIn()} />
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
                 <Card key={post.id} {...post} isPost={true} />
             ))}
-        </main>
+        </div>
     );
 }
 
