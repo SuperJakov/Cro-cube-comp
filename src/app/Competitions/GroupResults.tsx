@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import competitionStyles from "./Competitions.module.css";
 import Round from "./Round";
 import { Result } from "../Types/solve";
 
@@ -17,7 +16,7 @@ export default function GroupResults({
 }: Props) {
     return (
         <motion.div
-            className={competitionStyles["group-results"]}
+            className="flex flex-col gap-1 rounded-lg bg-foreground/5 p-4"
             initial={{
                 height: 100,
                 opacity: 0,

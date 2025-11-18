@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Result } from "../Types/solve";
-import CompetitionStyles from "./Competitions.module.css";
 import ShowAndHide from "../components/Competitions/showAndHide";
 import dynamic from "next/dynamic";
 import { Loader } from "../components/Loader/Loader";
@@ -15,7 +14,7 @@ const GroupResults = dynamic(() => import("./GroupResults"), {
 
 function LoadingGroup() {
     return (
-        <div className={CompetitionStyles["group-loader"]}>
+        <div className="flex min-h-[100px] items-center justify-center">
             <Loader />
         </div>
     );
@@ -48,16 +47,19 @@ export default function Group({ group, groupNumber }: Props) {
 
     return (
         <section
-            className={clsx(CompetitionStyles["group"], {
-                [CompetitionStyles["no-gap"]]: !areGroupResultsShown,
-            })} // Apply the no-gap class when group results are hidden
+            className={clsx(
+                "flex flex-col gap-4 rounded-xl border border-border/40 bg-card/10 p-4 transition-[gap] duration-300",
+                {
+                    "gap-0": !areGroupResultsShown,
+                },
+            )} // Apply the no-gap class when group results are hidden
             id={`group-${groupIndex}`}
             aria-labelledby={`group-title-${groupIndex}`}
         >
-            <div className={CompetitionStyles["group-title-container"]}>
+            <div className="flex items-center gap-4 rounded-lg bg-foreground/10 px-4 py-3">
                 <h4
                     id={`group-title-${groupIndex}`}
-                    className={CompetitionStyles["group-title"]}
+                    className="text-lg font-semibold text-foreground"
                 >
                     Grupa {groupNumber}
                 </h4>

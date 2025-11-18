@@ -1,12 +1,11 @@
 import { CompetitionResultType } from "../Types/solve";
 import { EventCode } from "../utils/eventMappings";
 import CompetitionEvent from "./CompetitionEvent";
-import competitionStyles from "./Competitions.module.css";
 
 // Component for displaying the competition name
 function CompetitionName({ name }: { name: string }) {
     return (
-        <h2 className={competitionStyles["comp-name"]}>
+        <h2 className="text-2xl font-semibold text-foreground">
             {name || "Ime natjecanja nije dostupno"}
         </h2>
     );
@@ -23,7 +22,7 @@ function CompetitionDate({ date }: { date: string }) {
         timeZone: "Europe/Zagreb",
     });
     return (
-        <time className={competitionStyles["comp-date"]} dateTime={date}>
+        <time className="text-lg text-muted-foreground" dateTime={date}>
             {dateInLocalString}
         </time>
     );
@@ -39,7 +38,7 @@ export default async function Competition(props: {
     const competitionEvents = Object.keys(competition.events) as EventCode[];
 
     return (
-        <div className={competitionStyles["comp-info"]}>
+        <div className="space-y-4 rounded-xl border border-border/30 bg-card/40 p-5 shadow-sm shadow-shadow-color/10">
             <CompetitionName name={competitionName} />
             <CompetitionDate date={competitionDateString} />
             <div>

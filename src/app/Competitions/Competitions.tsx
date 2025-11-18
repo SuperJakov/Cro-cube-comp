@@ -20,7 +20,7 @@ export default async function Competitions(props: Props) {
     });
 
     return (
-        <main>
+        <main className="pt-24">
             {sortedCompetitions.map(([compName, competition], index) => (
                 <Competition
                     competitionName={compName}

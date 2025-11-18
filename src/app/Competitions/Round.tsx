@@ -1,5 +1,4 @@
 import RoundResults from "./RoundResults";
-import CompetitionStyles from "./Competitions.module.css";
 import ShowAndHide from "../components/Competitions/showAndHide";
 import { Result } from "../Types/solve";
 
@@ -16,8 +15,8 @@ export default function Round({
 }) {
     return (
         <>
-            <div className={CompetitionStyles["round-title-container"]}>
-                <h4 className={CompetitionStyles["round-title"]}>
+            <div className="flex items-center justify-between rounded-lg border-2 border-border/60 bg-card/20 px-4 py-2">
+                <h4 className="text-base font-semibold text-foreground">
                     Runda {roundIndex + 1}
                 </h4>
                 <ShowAndHide

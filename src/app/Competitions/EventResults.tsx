@@ -1,5 +1,4 @@
 import Group from "./Group";
-import CompetitionStyles from "./Competitions.module.css";
 import { Result } from "../Types/solve";
 
 // Function to separate results by group
@@ -28,11 +27,11 @@ export default async function EventResults({ event }: EventProps) {
 
     return (
         <section
-            className={CompetitionStyles["event-results"]}
+            className="space-y-4"
             itemScope
             itemType="http://schema.org/SportEvent"
         >
-            <div className={CompetitionStyles["groups"]}>
+            <div className="grid gap-4 lg:grid-cols-2">
                 {groups.map((group, index) => (
                     <Group group={group} key={index} groupNumber={index + 1} />
                 ))}

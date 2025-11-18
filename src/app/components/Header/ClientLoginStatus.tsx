@@ -14,19 +14,27 @@ function ClientLoginStatus() {
 
     return (
         <div className="flex items-center gap-3">
-            <h2 className="text-base font-medium">
+            <div className="flex items-center gap-1">
                 {username ? (
-                    <span className="text-foreground">{username}</span>
+                    <span className="text-foreground text-base font-medium">
+                        {username}
+                    </span>
                 ) : (
-                    <Button asChild variant="ghost" className="text-foreground hover:bg-transparent hover:underline">
-                        <Link href="/Login">Prijava</Link>
+                    <Button
+                        asChild
+                        variant="ghost"
+                        className="h-auto p-0 text-foreground hover:bg-transparent hover:underline"
+                    >
+                        <Link href="/Login" className="text-base font-medium">
+                            Prijava
+                        </Link>
                     </Button>
                 )}
-            </h2>
+            </div>
             <AccountCircleSvg
                 className={cn(
-                    "h-6 w-6 cursor-pointer text-white transition-opacity hover:opacity-80",
-                    loggedIn ? "opacity-100" : "opacity-60"
+                    "h-6 w-6 cursor-pointer transition-opacity hover:opacity-80",
+                    loggedIn ? "opacity-100" : "opacity-60",
                 )}
                 width="24"
                 height="24"

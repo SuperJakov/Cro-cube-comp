@@ -44,14 +44,13 @@ export default async function Home() {
                 </div>
             </section>
 
-            {/* 2. 🗓️ SLJEDEĆE NATJECANJE - PREGLED */}
             <section id="next-competition" className="bg-accent py-12">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-8">
                         Nadolazeće Natjecanje
                     </h2>
 
-                    <div className="p-6 border-2 border-primary rounded-xl shadow-lg bg-white dark:bg-gray-700 max-w-2xl mx-auto text-center">
+                    <div className="p-6 border-2 border-primary rounded-xl shadow-lg max-w-2xl mx-auto text-center">
                         <p className="text-xl font-semibold">
                             Cro Cube Open 2026
                         </p>
@@ -71,7 +70,7 @@ export default async function Home() {
 
             <section id="latest-posts" className="container mx-auto px-4 py-8">
                 <h2 className="text-3xl font-bold mb-8 text-center">
-                    📢 Najnovije Obavijesti
+                    Najnovije Obavijesti
                 </h2>
 
                 {false ? (
