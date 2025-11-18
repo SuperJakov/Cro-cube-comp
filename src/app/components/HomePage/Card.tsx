@@ -30,7 +30,7 @@ export default function Card({
                     </h2>
                 </header>
                 <div
-                    className="flex-grow text-foreground prose prose-invert max-w-none transition-colors duration-300"
+                    className="flex-grow text-foreground max-w-none transition-colors duration-300"
                     aria-label="Post Description"
                 >
                     <Description description={description} isPost={!!isPost} />
