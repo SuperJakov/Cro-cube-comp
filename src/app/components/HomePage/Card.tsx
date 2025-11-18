@@ -20,21 +20,17 @@ export default function Card({
 
     return (
         <article className="group relative bg-card text-card-foreground rounded-xl shadow-lg border border-border/50 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            <div className="absolute -inset-px bg-gradient-to-r from-primary/50 to-secondary/50 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none blur-sm" />
-
             <div className="relative p-6 flex flex-col h-full z-10">
                 <header className="mb-4">
                     <h2
-                        className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors duration-300"
+                        className="text-2xl font-bold tracking-tight"
                         aria-label={title}
                     >
                         {title}
                     </h2>
                 </header>
                 <div
-                    className="flex-grow text-muted-foreground prose prose-invert max-w-none group-hover:text-foreground transition-colors duration-300"
+                    className="flex-grow text-foreground prose prose-invert max-w-none transition-colors duration-300"
                     aria-label="Post Description"
                 >
                     <Description description={description} isPost={!!isPost} />

@@ -55,16 +55,16 @@ export default async function Home() {
                         <Link href="/Competitions">
                             <Button
                                 size="lg"
-                                className="text-xl px-10 py-8 rounded-full shadow-2xl shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300 font-bold"
+                                className="text-lg px-6 py-6 sm:text-xl sm:px-10 sm:py-8 cursor-pointer"
                             >
                                 Prijavi se na natjecanje
                             </Button>
                         </Link>
                         <Link href="/rules">
                             <Button
-                                variant="outline"
+                                variant="secondary"
                                 size="lg"
-                                className="text-xl px-10 py-8 rounded-full border-2 hover:bg-accent hover:text-accent-foreground transition-all duration-300 font-medium backdrop-blur-sm"
+                                className="text-lg px-6 py-6 sm:text-xl sm:px-10 sm:py-8 cursor-pointer"
                             >
                                 Saznaj pravila
                             </Button>
@@ -76,7 +76,6 @@ export default async function Home() {
             {/* Next Competition Section */}
             <section className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
                     <div className="relative bg-card border border-border/50 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-xl">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="text-center md:text-left space-y-4">
