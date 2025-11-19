@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import ShowSvg from "../Svg/show";
 import HideSvg from "../Svg/hide";
 
@@ -11,8 +12,10 @@ export default function ShowAndHide({
     disabled?: boolean;
 }) {
     return (
-        <button
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-transparent text-muted-foreground shadow-sm transition-colors hover:bg-muted/20 hover:text-foreground disabled:cursor-not-allowed"
+        <Button
+            variant="outline"
+            size="icon-sm"
+            className="rounded-full cursor-pointer"
             onClick={toggleVisibility}
             disabled={disabled}
             aria-pressed={show} // Indicates the current state of the button
@@ -23,6 +26,6 @@ export default function ShowAndHide({
             ) : (
                 <HideSvg width="20px" height="20px" fill="currentColor" />
             )}
-        </button>
+        </Button>
     );
 }

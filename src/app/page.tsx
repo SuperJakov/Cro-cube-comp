@@ -27,7 +27,6 @@ export default async function Home() {
     return (
         <main className="min-h-screen space-y-24 ">
             {/* Hero Section */}
-            {/* Hero Section */}
             <section className="relative py-32 md:py-52 overflow-hidden flex items-center justify-center min-h-[80vh]">
                 {/* Mesh Gradient Background */}
                 <div className="absolute inset-0 -z-10 bg-background">
