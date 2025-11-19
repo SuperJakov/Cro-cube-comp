@@ -23,7 +23,7 @@ function ClientTitle() {
     const currentTitle = routeTitles[pathname] || "Cro Cube Comp";
 
     return (
-        <h1 className="inline-block min-h-[40px] text-3xl font-bold">
+        <h1 className="inline-block min-h-[28px] md:min-h-[40px] text-xl md:text-3xl font-bold">
             {currentTitle}
         </h1>
     );

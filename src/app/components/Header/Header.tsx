@@ -7,26 +7,36 @@ export default function Header() {
     return (
         <header
             role="banner"
-            className="fixed left-1/2 top-4 z-50 w-[min(92%,1200px)] -translate-x-1/2 p-3 bg-background/90 text-foreground border border-border/60 shadow-[0_35px_80px_rgba(0,0,0,0.18)] backdrop-blur-sm grid grid-cols-2 sm:grid-cols-[2fr_1fr] rounded-[30px] sm:rounded-[30px]"
+            className="fixed left-1/2 top-4 z-50 w-[min(92%,1200px)] -translate-x-1/2 px-4 py-2 bg-background/90 text-foreground border border-border/60 shadow-[0_35px_80px_rgba(0,0,0,0.18)] backdrop-blur-sm flex items-center justify-between rounded-full"
         >
-            <div className="flex flex-wrap gap-2.5">
-                <div className="flex justify-center items-center">
-                    <Link href="/" aria-label="Idite na početnu stranicu">
-                        <Image
-                            alt="Logo of website"
-                            className="w-5 h-5"
-                            src="/favicon.ico"
-                            width={20}
-                            height={20}
-                            priority={true}
-                        />
-                    </Link>
-                </div>
-                <div className="flex">
+            <div className="flex items-center gap-4">
+                <Link
+                    href="/"
+                    aria-label="Idite na početnu stranicu"
+                    className="flex items-center justify-center shrink-0"
+                >
+                    <Image
+                        alt="Logo of website"
+                        className="w-6 h-6"
+                        src="/favicon.ico"
+                        width={24}
+                        height={24}
+                        priority={true}
+                    />
+                </Link>
+                <div>
                     <ClientTitle />
                 </div>
             </div>
-            <div className="flex justify-end items-center">
+
+            {/* Mobile Title centered if needed, or just hidden on very small screens if it takes too much space, 
+                but for now let's keep ClientTitle in the left group and maybe show a smaller version or just the logo on mobile if space is tight.
+                Actually, the user said "looks terrible on smaller screens". 
+                Let's make sure the title doesn't break things. 
+                The previous code had ClientTitle in a separate div. 
+            */}
+
+            <div className="flex items-center gap-2">
                 <ClientLoginStatus />
             </div>
         </header>
