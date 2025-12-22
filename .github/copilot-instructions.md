@@ -10,4 +10,4 @@ We use tabwidth of 4 spaces.
 
 As a package manager, we are using pnpm.
 
-The server is located on "https://api.crocubecomp.com/" while this app is located on "https://www.crocubecomp.com/"
+The server is located on "https://api.crocubecomp.jakovcicek.from.hr" while this app is located on "https://crocubecomp.jakovcicek.from.hr"
